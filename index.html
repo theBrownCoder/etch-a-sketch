@@ -20,11 +20,11 @@
 
     for (let x = 0; x < num; x++) {
         var div = document.createElement('div');
+        div.setAttribute('id', "pixel");
         div.style.backgroundColor = "red";
-        div.style.border = "2px black solid";
+        div.style.border = "1px black solid";
         div.style.width = "48px";
         div.style.height = "48px";
-        // div.style.padding = "20px 20px";
         grid.appendChild(div);
         console.log(num + " divs created.");
     }
