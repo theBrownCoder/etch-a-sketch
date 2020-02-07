@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Etch-A-Sketch ~ By: Dameon Wilson</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="grid-container">
+    </div>
+</body>
+<script>
+    const num = 256; // 256 squares in the grid
+    const grid = document.getElementById('grid-container');
+    console.log(grid);
+
+    for (let x = 0; x < num; x++) {
+        var div = document.createElement('div');
+        div.style.backgroundColor = "red";
+        div.style.border = "2px black solid";
+        div.style.width = "48px";
+        div.style.height = "48px";
+        // div.style.padding = "20px 20px";
+        grid.appendChild(div);
+        console.log(num + " divs created.");
+    }
+</script>
+
+</html>
