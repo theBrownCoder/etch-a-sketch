@@ -3,5 +3,4 @@
     grid-template-columns: repeat(16, [col] 48px);
     grid-template-rows: repeat(16, [row] 48px);
     justify-content: center;
-
 }
