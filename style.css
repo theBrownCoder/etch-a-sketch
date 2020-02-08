@@ -17,9 +17,10 @@
 #newGrid {
     width: 200px;
     height: 50px;
-    background-color: red;
+    background-color: darkslategrey;
     border-radius: 20px;
-    color: wheat;
+    color: black;
     font-size: x-large;
     text-align: center;
+    border: none;
 }
