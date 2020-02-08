@@ -20,13 +20,19 @@
 
     for (let x = 0; x < num; x++) {
         var div = document.createElement('div');
-        div.setAttribute('id', "pixel");
+        div.setAttribute('id', 'pixel');
         div.style.backgroundColor = "red";
         div.style.border = "1px black solid";
         div.style.width = "48px";
         div.style.height = "48px";
+        div.onmouseover = function () {
+            this.style.backgroundColor = "grey";
+        }
+        div.onmouseout = function () {
+            this.style.backgroundColor = "red";
+        }
         grid.appendChild(div);
-        console.log(num + " divs created.");
+        console.log(x + 1 + " divs created.");
     }
 </script>
 
