@@ -10,30 +10,95 @@
 </head>
 
 <body>
-    <div id="grid-container">
+    <!-- Grid Create / Reset Button -->
+    <div id="button-container">
+        <button id="newGrid">New Grid</button>
     </div>
-</body>
-<script>
-    const num = 256; // 256 squares in the grid
-    const grid = document.getElementById('grid-container');
-    console.log(grid);
 
-    for (let x = 0; x < num; x++) {
-        var div = document.createElement('div');
-        div.setAttribute('id', 'pixel');
-        div.style.backgroundColor = "red";
-        div.style.border = "1px black solid";
-        div.style.width = "48px";
-        div.style.height = "48px";
-        div.onmouseover = function () {
-            this.style.backgroundColor = "grey";
+    <!-- Grid Container -->
+    <div id="grid-container"></div>
+
+    <script>
+        // An array of colors to use in the grid
+        var colorArray = [
+            '#FF6633', '#FFB399', '#FF33FF', '#FFFF99', '#00B3E6',
+            '#E6B333', '#3366E6', '#999966', '#99FF99', '#B34D4D',
+            '#80B300', '#809900', '#E6B3B3', '#6680B3', '#66991A',
+            '#FF99E6', '#CCFF1A', '#FF1A66', '#E6331A', '#33FFCC',
+            '#66994D', '#B366CC', '#4D8000', '#B33300', '#CC80CC',
+            '#66664D', '#991AFF', '#E666FF', '#4DB3FF', '#1AB399',
+            '#E666B3', '#33991A', '#CC9999', '#B3B31A', '#00E680',
+            '#4D8066', '#809980', '#E6FF80', '#1AFF33', '#999933',
+            '#FF3380', '#CCCC00', '#66E64D', '#4D80CC', '#9900B3',
+            '#E64D66', '#4DB380', '#FF4D4D', '#99E6E6', '#6666FF'
+        ];
+
+        // sets up grid link and sets the initial grid width & length value
+        const grid = document.getElementById('grid-container');
+        var num = 256;
+        console.log(grid);
+
+        function random() {
+            return colorArray[Math.floor(Math.random() * colorArray.length)]
+        };
+
+
+        // generates the original grid by creating divs, setting the attributes, and adding them to the grid.
+        for (let x = 0; x < num; x++) {
+            var div = document.createElement('div');
+            div.setAttribute('id', 'pixel');
+            div.style.backgroundColor = "silver";
+            div.style.border = "0.5px gray solid";
+            div.style.width = "48px";
+            div.style.height = "48px";
+            div.onmouseover = function () {
+                this.style.backgroundColor = "#fff";
+            }
+            div.onmouseout = function () {
+                this.style.backgroundColor = random();
+            }
+            grid.appendChild(div);
+            console.log(x + 1 + " divs created.");
         }
-        div.onmouseout = function () {
-            this.style.backgroundColor = "red";
+
+        // sets up the grid create / reset button
+        const button = document.getElementById("newGrid");
+        button.addEventListener('click', (e) => {
+            clearGrid();
+        });
+        button.onmouseover = function () {
+            this.style.backgroundColor = random();
         }
-        grid.appendChild(div);
-        console.log(x + 1 + " divs created.");
-    }
-</script>
+
+        // clears the grid from the screen and prompts the user for a grid size. Then, it generates the new grid and puts it on the screen.
+        function clearGrid() {
+            for (let x = 0; x < num; x++) {
+                grid.removeChild(grid.lastChild);
+            }
+            var squares = prompt("How many squares per side do you want for the new grid?");
+            num = squares * squares;
+            grid.style.gridTemplateColumns = `repeat(${squares}, [col] 48px)`;
+            grid.style.gridTemplateRows = `repeat(${squares}, [row] 48px)`;
+
+            // sets the attributes of the grid blocks and adds them to the grid container
+            for (let x = 0; x < num; x++) {
+                var div = document.createElement('div');
+                div.setAttribute('id', 'pixel');
+                div.style.backgroundColor = "silver";
+                div.style.border = "0.5px gray solid";
+                div.style.width = "48px";
+                div.style.height = "48px";
+                div.onmouseover = function () {
+                    this.style.backgroundColor = "#000";
+                }
+                div.onmouseout = function () {
+                    this.style.backgroundColor = random();
+                }
+                grid.appendChild(div);
+                console.log(x + 1 + " divs created.");
+            }
+        }
+    </script>
+</body>
 
 </html>
